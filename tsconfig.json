@@ -1,5 +1,10 @@
 {
   "extends": "expo/tsconfig.base",
+  "types": [
+    "jest",
+    "styled-components-react-native",
+    "./src/types",
+  ],
   "compilerOptions": {
     "strict": true
   }

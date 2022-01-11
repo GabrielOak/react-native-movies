@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-movies",
-    "slug": "react-native-movies",
+    "name": "Movies",
+    "slug": "Movies",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
