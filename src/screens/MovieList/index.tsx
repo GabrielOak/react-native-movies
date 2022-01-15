@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import AnimatedFlatList from '../../components/AnimatedFlatList';
 import MovieItem from '../../components/MovieItem';
 import api from '../../service';
 import { Container, HeaderContainer, Title } from './styles';
 
 const MovieList: React.FC = () => {
-  const [populaMovies, setPopularMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
 
@@ -51,45 +52,15 @@ const MovieList: React.FC = () => {
         <HeaderContainer>
           <Title>Popular Movies</Title>
         </HeaderContainer>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={{ flexGrow: 0}}
-          data={populaMovies}
-          ItemSeparatorComponent={
-            () => <View style={{ width: 10 }}/>
-          }
-          keyExtractor={( item : any) => `${item.id}`}
-          renderItem={({ item } : any) => <MovieItem imagePath={item.poster_path} big/>}
-        />
+        <AnimatedFlatList items={popularMovies} big/>
         <HeaderContainer>
           <Title>Now Playing</Title>
         </HeaderContainer>
-        <FlatList
-          horizontal
-          style={{ flexGrow: 0}}
-          showsHorizontalScrollIndicator={false}
-          data={nowPlaying}
-          ItemSeparatorComponent={
-            () => <View style={{ width: 10 }}/>
-          }
-          keyExtractor={( item : any) => `${item.id}`}
-          renderItem={({ item } : any) => <MovieItem imagePath={item.poster_path}/>}
-        />
+        <AnimatedFlatList items={nowPlaying} />
         <HeaderContainer>
           <Title>Top Rated</Title>
         </HeaderContainer>
-        <FlatList
-          horizontal
-          style={{ flexGrow: 0, marginBottom: 8 }}
-          showsHorizontalScrollIndicator={false}
-          data={topRatedMovies}
-          ItemSeparatorComponent={
-            () => <View style={{ width: 10 }}/>
-          }
-          keyExtractor={( item : any) => `${item.id}`}
-          renderItem={({ item } : any) => <MovieItem imagePath={item.poster_path}/>}
-        />
+        <AnimatedFlatList items={topRatedMovies} />
       </Container>
     </SafeAreaView>
 
